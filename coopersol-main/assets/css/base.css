@@ -1,0 +1,1498 @@
+/* =========================================================
+   COOPERSOL — base.css
+   Cores, fontes e componentes usados em TODOS os tamanhos.
+   O layout de cada tela fica em mobile.css, tablet.css e desktop.css
+   ========================================================= */
+
+:root {
+  /* Paleta da marca */
+  --verde: #2E7D32;        /* Verde Coopersol — principal */
+  --verde-mata: #1B4332;   /* títulos, rodapé, fundos escuros */
+  --sol: #F9A825;          /* Amarelo Sol — destaques */
+  --papel: #F7F5EF;        /* fundo */
+  --grafite: #1F2A24;      /* texto */
+  --branco: #FFFFFF;
+  --linha: #DDD9CE;
+  --texto-suave: #4F5B54;
+
+  /* Cores funcionais (só no guia de separação) */
+  /* tons escurecidos para o texto branco passar no contraste mínimo (WCAG AA, 4,5:1) */
+  --mat-papel: #1565C0;
+  --mat-plastico: #C62828;
+  --mat-metal: #FBC02D;
+  --mat-vidro: #2E7D32;
+  --mat-eletronico: #455A64;
+  --mat-oleo: #6D4C41;
+
+  /* Fontes */
+  --fonte-titulo: "Nunito", "Trebuchet MS", sans-serif;
+  --fonte-texto: "Inter", "Segoe UI", Arial, sans-serif;
+
+  /* Medidas */
+  --raio: 16px;
+  --raio-pilula: 999px;
+  --largura-max: 1160px;
+}
+
+/* ---------- Reset simples ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px; /* compensa o cabeçalho fixo nos links #âncora */
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--grafite);
+  background: var(--branco);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--verde-mata);
+  margin: 0 0 12px;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+a {
+  color: var(--verde);
+}
+
+/* Foco visível em tudo que recebe o teclado */
+a:focus-visible,
+button:focus-visible,
+video:focus-visible,
+[tabindex]:focus-visible,
+label:focus-visible,
+.menu-toggle:focus-visible + .menu-botao {
+  outline: 3px solid var(--sol);
+  outline-offset: 3px;
+}
+
+main:focus,
+footer:focus {
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+}
+
+/* ---------- Etiqueta (texto pequeno acima dos títulos) ---------- */
+.etiqueta {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+.etiqueta--clara {
+  color: var(--sol);
+}
+
+/* amarelo sobre o verde médio não passa no contraste: usa branco */
+.secao--verde .etiqueta--clara {
+  color: var(--branco);
+}
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;              /* área de toque confortável */
+  padding: 12px 24px;
+  border-radius: var(--raio-pilula);
+  border: 2px solid transparent;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+}
+
+.botao--sol {
+  background: var(--sol);
+  color: var(--grafite);
+}
+
+.botao--sol:hover {
+  background: #FFB733;
+}
+
+.botao--verde {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.botao--verde:hover {
+  background: var(--verde-mata);
+}
+
+.botao--limpar {
+  background: transparent;
+  border-color: var(--linha);
+  color: var(--texto-suave);
+}
+
+.botao--limpar:hover {
+  border-color: var(--texto-suave);
+}
+
+.botao--contorno {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--branco);
+}
+
+.botao--contorno:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Cabeçalho ---------- */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--branco);
+  border-bottom: 1px solid var(--linha);
+}
+
+.topo__linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 72px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.marca__texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.marca__nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--verde-mata);
+}
+
+.marca__local {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.marca--clara .marca__nome {
+  color: var(--branco);
+}
+
+.marca--clara .marca__local {
+  color: var(--sol);
+}
+
+.menu-toggle {
+  /* o checkbox fica escondido; quem aparece é o label (ícone) */
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu a {
+  font-weight: 600;
+  color: var(--grafite);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--verde);
+}
+
+.menu a.menu__destaque {
+  background: var(--verde);
+  color: var(--branco);
+  border-radius: var(--raio-pilula);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(249, 168, 37, 0.25), transparent 45%),
+    var(--verde-mata);
+  color: var(--branco);
+}
+
+.hero__linha {
+  display: flex;
+  align-items: center;
+}
+
+.hero h1 {
+  color: var(--branco);
+}
+
+.hero__resumo {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.hero__arte img {
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.25));
+}
+
+/* ---------- Números ---------- */
+.numeros {
+  background: var(--sol);
+}
+
+/* GRID: as colunas mudam em cada arquivo de tela */
+.numeros__linha {
+  display: grid;
+}
+
+.numero {
+  display: flex;
+  flex-direction: column;
+}
+
+.numero strong {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  color: var(--verde-mata);
+  line-height: 1.1;
+}
+
+.numero span {
+  font-size: 0.9rem;
+  color: var(--grafite);
+}
+
+/* ---------- Seções ---------- */
+.secao--papel {
+  background: var(--papel);
+}
+
+.secao--verde {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.secao--verde h2 {
+  color: var(--branco);
+}
+
+.secao__cabeca {
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.secao__cabeca p:last-child {
+  color: var(--texto-suave);
+}
+
+/* ---------- Cronograma (cards por dia) ---------- */
+/* GRID: 1 coluna no celular, 2 no tablet, 3 no computador */
+.dias {
+  display: grid;
+  gap: 16px;
+}
+
+.dia {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 20px;
+}
+
+.dia__nome {
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.turno {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.turno p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.turno__rotulo {
+  align-self: flex-start;
+  padding: 2px 12px;
+  border-radius: var(--raio-pilula);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.turno__rotulo--manha {
+  background: #FFF3D6;
+  color: #7A5200;
+}
+
+.turno__rotulo--tarde {
+  background: #E3F1E4;
+  color: var(--verde-mata);
+}
+
+/* Lista de bairros com altura máxima e rolagem por dentro do card.
+   As sombras em cima/embaixo só aparecem quando há mais conteúdo para rolar. */
+.dia__corpo {
+  --fundo-card: var(--branco);
+  position: relative;            /* referência para o offsetTop do JS */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--verde) transparent;
+  background:
+    linear-gradient(var(--fundo-card) 30%, rgba(255, 255, 255, 0)) top / 100% 28px no-repeat local,
+    linear-gradient(rgba(255, 255, 255, 0), var(--fundo-card) 70%) bottom / 100% 28px no-repeat local,
+    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.14), transparent) top / 100% 12px no-repeat scroll,
+    radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.14), transparent) bottom / 100% 12px no-repeat scroll;
+}
+
+.dia__nota {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.dia--outros {
+  background: var(--papel);
+  border-style: dashed;
+}
+
+.dia--outros .dia__corpo {
+  --fundo-card: var(--papel);
+  max-height: 210px;   /* o card já tem nota e botão: lista mais baixa para alinhar com os vizinhos */
+}
+
+.dia--outros .botao {
+  align-self: flex-start;
+}
+
+.dia--aviso {
+  background: var(--papel);
+  border-style: dashed;
+  justify-content: center;
+}
+
+.dia--aviso .botao {
+  align-self: flex-start;
+}
+
+/* ---------- Materiais ---------- */
+/* GRID: 2 colunas no celular, 4 no tablet e no computador */
+.materiais {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.material {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;   /* título e texto sempre no topo, alinhados entre os cards */
+  padding: 20px;
+  border-radius: var(--raio);
+  color: var(--branco);
+}
+
+.material h3,
+.material h4 {
+  color: inherit;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.material p {
+  margin: 0;
+}
+
+.material--papel    { background: var(--mat-papel); }
+.material--plastico { background: var(--mat-plastico); }
+.material--metal    { background: var(--mat-metal); color: var(--grafite); }
+.material--vidro    { background: var(--mat-vidro); }
+.material--eletronico { background: var(--mat-eletronico); }
+.material--oleo     { background: var(--mat-oleo); }
+
+/* ---------- Dicas ---------- */
+.dicas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dica {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 20px;
+}
+
+.dica h3,
+.dica h4 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.dica p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.dica__numero {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--branco);
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* ---------- Quem somos ---------- */
+.sobre {
+  display: flex;
+}
+
+.linha-tempo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid var(--sol);
+}
+
+.linha-tempo li {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 20px 20px;
+  position: relative;
+}
+
+.linha-tempo li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 6px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--verde);
+  border: 3px solid var(--branco);
+}
+
+.linha-tempo__ano {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--verde);
+}
+
+.linha-tempo p {
+  margin: 0;
+}
+
+.pilares {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pilar {
+  flex: 1 1 240px;
+  border-top: 4px solid var(--verde);
+  background: var(--papel);
+  border-radius: 0 0 var(--raio) var(--raio);
+  padding: 20px;
+}
+
+.pilar p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* ---------- Empresas ---------- */
+.empresas {
+  display: flex;
+}
+
+.empresas__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  background: var(--verde-mata);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* GRID: colunas do rodapé definidas em cada arquivo de tela */
+.rodape__linha {
+  display: grid;
+}
+
+.rodape h3 {
+  color: var(--sol);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.rodape a {
+  color: var(--branco);
+}
+
+.rodape__marca p {
+  margin-top: 12px;
+  max-width: 320px;
+}
+
+/* Barra final: copyright + crédito (flex) */
+.rodape__base {
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.rodape__base p {
+  margin: 0;
+}
+
+.rodape__copyright {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Página do formulário ---------- */
+.pagina-topo {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(249, 168, 37, 0.25), transparent 45%),
+    var(--verde-mata);
+  color: var(--branco);
+}
+
+.pagina-topo h1 {
+  color: var(--branco);
+}
+
+.pagina-topo p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 620px;
+}
+
+.voltar {
+  display: block;
+  width: fit-content;
+  margin-bottom: 16px;
+  color: var(--sol);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* GRID: formulário + cartão lateral */
+.contato-layout {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+.formulario {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+}
+
+/* GRID: campos do formulário */
+.form-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo--inteiro {
+  grid-column: 1 / -1;  /* ocupa todas as colunas */
+}
+
+.campo label,
+.campo legend {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--verde-mata);
+}
+
+.campo .obrigatorio {
+  color: #C62828;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  color: var(--grafite);
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  border-radius: 10px;
+}
+
+.campo textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+  background: var(--branco);
+}
+
+/* Validação nativa do HTML, sem JavaScript */
+.campo input:user-invalid,
+.campo textarea:user-invalid {
+  border-color: #C62828;
+}
+
+.dica-campo {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+fieldset.campo {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/* GRID: opções de "Você é" */
+.opcoes {
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.campo .opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--linha);
+  border-radius: 10px;
+  background: var(--papel);
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.opcao input {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  accent-color: var(--verde);
+}
+
+.opcao:has(input:checked) {
+  border-color: var(--verde);
+  background: #E8F3E9;
+}
+
+.campo .aceite {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.aceite input {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  margin-top: 2px;
+  accent-color: var(--verde);
+}
+
+.form-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.form-acoes .botao {
+  cursor: pointer;
+}
+
+.cartao-lateral {
+  background: var(--papel);
+  border-radius: var(--raio);
+  padding: 24px;
+}
+
+.cartao-lateral h2 {
+  font-size: 1.4rem;
+}
+
+.cartao-lateral ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cartao-lateral li strong {
+  display: block;
+  color: var(--verde-mata);
+}
+
+/* ---------- Botão fixo de WhatsApp ---------- */
+.whats-fixo {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25D366;
+  color: var(--branco);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.whats-fixo:hover {
+  transform: scale(1.06);
+}
+
+/* =========================================================
+   ACESSIBILIDADE (sem JavaScript)
+   ========================================================= */
+
+/* Link "Pular para o conteúdo": só aparece quando recebe o foco do teclado */
+.pular {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 0 0 10px 10px;
+  background: var(--sol);
+  color: var(--grafite);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pular:focus {
+  top: 0;
+}
+
+/* Barra de acessibilidade no topo (flex) */
+.acessibilidade {
+  background: var(--verde-mata);
+  color: var(--branco);
+  font-size: 0.85rem;
+}
+
+.acessibilidade__linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  min-height: 40px;
+}
+
+.acessibilidade__atalhos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.acessibilidade a {
+  color: var(--branco);
+  text-decoration: none;
+}
+
+.acessibilidade a:hover {
+  text-decoration: underline;
+}
+
+.acessibilidade__atalhos span {
+  color: var(--sol);
+}
+
+.acessibilidade__opcoes {
+  display: flex;
+  gap: 8px;
+}
+
+.acessibilidade__opcoes {
+  align-items: center;
+}
+
+.acessibilidade__rotulo {
+  font-weight: 600;
+}
+
+.a11y-grupo {
+  display: flex;
+  gap: 4px;
+}
+
+.a11y-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 36px;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--raio-pilula);
+  background: transparent;
+  color: var(--branco);
+  font-family: var(--fonte-texto);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.a11y-botao:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.a11y-botao:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.a11y-botao[aria-pressed="true"] {
+  background: var(--sol);
+  border-color: var(--sol);
+  color: var(--grafite);
+}
+
+/* Texto só para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Alto contraste (classe colocada no <html> pelo main.js): fundo preto, texto branco e links amarelos */
+html.alto-contraste body,
+html.alto-contraste body *:not(img):not(video):not(svg):not(path) {
+  background-color: #000 !important;
+  background-image: none !important;
+  color: #FFF !important;
+  border-color: #FFF !important;
+  box-shadow: none !important;
+}
+
+html.alto-contraste a,
+html.alto-contraste a * {
+  color: #FF0 !important;
+  text-decoration: underline !important;
+}
+
+html.alto-contraste .botao,
+html.alto-contraste .a11y-botao,
+html.alto-contraste .carrossel__seta,
+html.alto-contraste .menu a.menu__destaque {
+  border: 2px solid #FF0 !important;
+}
+
+html.alto-contraste .a11y-botao[aria-pressed="true"],
+html.alto-contraste .a11y-botao[aria-pressed="true"] *,
+html.alto-contraste .carrossel__ponto[aria-current="true"]::before,
+html.alto-contraste .bairros li.achado {
+  background-color: #FF0 !important;
+  color: #000 !important;
+}
+
+/* Quem pede menos movimento no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   COLETA: aviso e ponto de entrega
+   ========================================================= */
+.aviso {
+  border-left: 4px solid var(--sol);
+  background: #FFF8E1;
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  color: var(--grafite);
+}
+
+/* GRID: foto + texto */
+.entrega {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+  margin-top: 40px;
+  background: var(--papel);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.entrega__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.entrega__texto h3 {
+  font-size: 1.5rem;
+}
+
+.entrega__info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* =========================================================
+   SEPARAÇÃO: destaque, o que não coleta
+   ========================================================= */
+.destaque-separacao {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--verde-mata);
+  color: var(--branco);
+  border-radius: var(--raio);
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.destaque-separacao p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.destaque-separacao strong {
+  color: var(--sol);
+}
+
+.destaque-separacao__icone {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--sol);
+  color: var(--grafite);
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.subtitulo {
+  font-size: 1.3rem;
+  margin: 0 0 16px;
+}
+
+.subtitulo--alerta {
+  color: #B71C1C;
+}
+
+/* GRID: lista do que não é coletado */
+.nao-coleta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.nao-coleta li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--branco);
+  border: 1px solid #F1C6C6;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.nao-coleta li::before {
+  content: "\2715";              /* ✕ */
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #B71C1C;
+  color: var(--branco);
+  font-size: 0.8rem;
+}
+
+.nota {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin-bottom: 32px;
+}
+
+/* =========================================================
+   PARCERIA COM A PREFEITURA
+   ========================================================= */
+.parceria {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 32px;
+}
+
+.parceria p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.parceria__logo {
+  height: 64px;
+  width: auto;
+}
+
+.rodape__parceria {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.rodape__parceria p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.rodape__parceria img {
+  height: 48px;
+  width: auto;
+  background: var(--branco);
+  border-radius: 8px;
+}
+
+/* =========================================================
+   GALERIA: vídeo + carrossel de fotos (só CSS)
+   ========================================================= */
+/* GRID: vídeo ao lado do carrossel no computador */
+.galeria {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+
+.video {
+  margin: 0;
+}
+
+.video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: var(--raio);
+}
+
+.video figcaption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.credito {
+  display: block;
+  margin-top: 4px;
+  font-weight: 600;
+  color: var(--verde-mata);
+}
+
+.fotos {
+  min-width: 0;          /* deixa o carrossel rolar dentro da coluna do grid */
+}
+
+.fotos__dica {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+/* FLEX + scroll-snap: cada foto "encaixa" ao deslizar */
+.carrossel {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 16px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--verde) transparent;
+}
+
+.slide {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+}
+
+.slide figure {
+  margin: 0;
+  background: var(--branco);
+  border-radius: var(--raio);
+  overflow: hidden;
+  border: 1px solid var(--linha);
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.slide figcaption {
+  padding: 12px 16px;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   PRESTAÇÃO DE CONTAS
+   ========================================================= */
+/* GRID: cartões de documentos */
+.documentos {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.documento {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--linha);
+  border-top: 4px solid var(--verde);
+  border-radius: 0 0 var(--raio) var(--raio);
+  background: var(--branco);
+}
+
+.documento h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.documento p {
+  margin: 0;
+  color: var(--texto-suave);
+  flex: 1;
+}
+
+.status {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: var(--raio-pilula);
+  background: #EEF0EE;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.documento .botao {
+  align-self: flex-start;
+  min-height: 40px;
+  padding: 8px 18px;
+}
+
+/* =========================================================
+   BUSCA DE BAIRRO + LISTA DE BAIRROS
+   ========================================================= */
+.busca {
+  background: var(--papel);
+  border-radius: var(--raio);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.busca__rotulo {
+  display: block;
+  font-weight: 600;
+  color: var(--verde-mata);
+  margin-bottom: 8px;
+}
+
+.busca__campo {
+  width: 100%;
+  max-width: 480px;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  border: 2px solid var(--linha);
+  border-radius: var(--raio-pilula);
+  background: var(--branco);
+  color: var(--grafite);
+}
+
+.busca__campo:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+.busca__resultado {
+  margin: 10px 0 0;
+  font-weight: 600;
+  color: var(--verde-mata);
+}
+
+.busca__resultado:empty {
+  display: none;
+}
+
+.bairros {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.bairros li {
+  padding: 1px 6px;
+  margin-left: -6px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.bairros li.achado {
+  background: var(--sol);
+  color: var(--grafite);
+  font-weight: 600;
+}
+
+.dia {
+  transition: opacity 0.2s ease;
+}
+
+.dia.sem-resultado {
+  opacity: 0.35;
+}
+
+/* =========================================================
+   CARROSSEL: controles (criados pelo main.js) e transição suave
+   ========================================================= */
+.carrossel-moldura {
+  position: relative;
+}
+
+.carrossel {
+  scroll-behavior: smooth;
+}
+
+.slide {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* a foto em destaque fica nítida; as vizinhas ficam suaves */
+.slide img {
+  transition: opacity 0.4s ease;
+}
+
+.carrossel-moldura .slide:not(.ativo) {
+  transform: scale(0.97);
+}
+
+/* só a foto fica mais clara; a legenda mantém o contraste */
+.carrossel-moldura .slide:not(.ativo) img {
+  opacity: 0.55;
+}
+
+.carrossel__seta {
+  position: absolute;
+  top: calc(50% - 40px);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--sol);
+  color: var(--grafite);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.carrossel__seta:hover {
+  transform: scale(1.06);
+}
+
+.carrossel__seta:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carrossel__seta--anterior {
+  left: 8px;
+}
+
+.carrossel__seta--proxima {
+  right: 8px;
+}
+
+.carrossel__pontos {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.carrossel__pontos {
+  gap: 4px;
+}
+
+/* área de toque de 28px (mínimo recomendado: 24px), com a bolinha desenhada no meio */
+.carrossel__ponto {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrossel__ponto::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--verde);
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carrossel__ponto[aria-current="true"]::before {
+  background: var(--verde);
+  transform: scale(1.2);
+}
