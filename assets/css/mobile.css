@@ -1,0 +1,303 @@
+/* =========================================================
+   COOPERSOL — mobile.css
+   Celulares: até 767px de largura
+   Tudo em uma coluna; menu abre pelo ícone (sem JavaScript)
+   ========================================================= */
+
+.container {
+  padding: 0 16px;
+}
+
+/* ---------- Cabeçalho + menu hambúrguer ---------- */
+.marca__simbolo {
+  width: 38px;
+  height: 38px;
+}
+
+.menu-botao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.menu-botao span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--verde-mata);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* menu fechado */
+.menu {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  padding: 8px 0 16px;
+  gap: 4px;
+}
+
+.menu a {
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+
+.menu a.menu__destaque {
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* menu aberto: quando o checkbox está marcado */
+.menu-toggle:checked ~ .menu {
+  display: flex;
+}
+
+/* ícone vira um "X" */
+.menu-toggle:checked + .menu-botao span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle:checked + .menu-botao span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked + .menu-botao span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 40px 0 48px;
+}
+
+.hero__linha {
+  flex-direction: column;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.hero__acoes {
+  flex-direction: column;
+}
+
+.hero__acoes .botao {
+  width: 100%;
+}
+
+.hero__arte {
+  display: none; /* no celular o texto e o botão vêm primeiro */
+}
+
+/* ---------- Números: 2 por linha ---------- */
+.numeros {
+  padding: 24px 0;
+}
+
+.numeros__linha {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 16px;
+}
+
+.numero strong {
+  font-size: 1.5rem;
+}
+
+/* ---------- Seções ---------- */
+.secao {
+  padding: 48px 0;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+/* ---------- Cronograma (grid): um dia embaixo do outro ---------- */
+.dias {
+  grid-template-columns: 1fr;
+}
+
+/* ---------- Materiais: 2 por linha ---------- */
+.materiais {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.material {
+  padding: 16px;
+}
+
+.material h3,
+.material h4 {
+  font-size: 1.35rem;
+}
+
+.material p {
+  font-size: 0.9rem;
+}
+
+/* ---------- Dicas ---------- */
+.dica {
+  flex: 1 1 100%;
+}
+
+/* ---------- Quem somos ---------- */
+.sobre {
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.linha-tempo {
+  margin-left: 8px;
+}
+
+/* ---------- Empresas ---------- */
+.secao--verde {
+  padding: 40px 0;
+}
+
+.empresas {
+  flex-direction: column;
+  gap: 16px;
+}
+
+.empresas__acoes {
+  flex-direction: column;
+}
+
+.empresas__acoes .botao {
+  width: 100%;
+}
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  padding: 40px 0 88px; /* espaço extra para o botão fixo de WhatsApp */
+}
+
+.rodape__linha {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.rodape__base {
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 16px;
+}
+
+/* ---------- Página do formulário ---------- */
+.pagina-topo {
+  padding: 32px 0 36px;
+}
+
+.pagina-topo h1 {
+  font-size: 1.9rem;
+}
+
+.contato {
+  padding: 32px 0 48px;
+}
+
+.contato-layout {
+  grid-template-columns: 1fr;
+}
+
+.formulario {
+  padding: 20px;
+}
+
+.form-grid {
+  grid-template-columns: 1fr;
+}
+
+.opcoes {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-acoes .botao {
+  width: 100%;
+}
+
+/* ---------- Acessibilidade ---------- */
+/* no celular mostra só o primeiro atalho; os outros continuam no teclado via Tab */
+.acessibilidade__atalhos a:not(:first-child) {
+  display: none;
+}
+
+.acessibilidade__atalhos span {
+  display: none;
+}
+
+.a11y-botao {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+/* ---------- Ponto de entrega (grid) ---------- */
+.entrega {
+  grid-template-columns: 1fr;
+}
+
+.entrega__foto {
+  aspect-ratio: 4 / 3;
+}
+
+.entrega__texto {
+  padding: 0 20px 24px;
+}
+
+.entrega .botao {
+  width: 100%;
+}
+
+/* ---------- Separação ---------- */
+.destaque-separacao {
+  padding: 18px;
+}
+
+.nao-coleta {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nao-coleta li {
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
+/* ---------- Galeria (grid): vídeo em cima, fotos embaixo ---------- */
+.galeria {
+  grid-template-columns: 1fr;
+}
+
+.video {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.slide {
+  flex-basis: 85%;
+}
+
+/* ---------- Prestação de contas (grid) ---------- */
+.documentos {
+  grid-template-columns: 1fr;
+}
+
+/* ---------- Rodapé ---------- */
+.rodape__parceria {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ---------- Cronograma: lista de bairros mais baixa no celular ---------- */
+.dia__corpo {
+  max-height: 240px;
+}

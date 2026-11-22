@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coopersol Jales — Coleta seletiva que gera renda</title>
+  <meta name="description" content="Coopersol: cooperativa de catadores que faz a coleta seletiva em Jales/SP, de segunda a sábado. Veja o dia da coleta no seu bairro, o que separar e o que não coletamos.">
+  <link rel="icon" href="assets/img/logo.png" type="image/svg+xml">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS: base para todos + um arquivo por tamanho de tela -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/mobile.css" media="(max-width: 767px)">
+  <link rel="stylesheet" href="assets/css/tablet.css" media="(min-width: 768px) and (max-width: 1023px)">
+  <link rel="stylesheet" href="assets/css/desktop.css" media="(min-width: 1024px)">
+
+  <!-- Aplica as preferências de acessibilidade salvas antes de desenhar a página (evita "piscar") -->
+  <script>
+    try {
+      var a11y = JSON.parse(localStorage.getItem('coopersol-a11y') || '{}');
+      if (a11y.contraste) document.documentElement.classList.add('alto-contraste');
+      if (a11y.fonte) document.documentElement.style.fontSize = [100, 112.5, 125, 137.5][a11y.fonte] + '%';
+    } catch (e) {}
+  </script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== ACESSIBILIDADE =====
+       Atalhos de teclado no padrão eMAG: Alt+1 conteúdo, Alt+2 menu, Alt+3 rodapé.
+       Os botões de fonte e contraste são controlados por assets/js/main.js e ficam salvos no navegador. -->
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="acessibilidade" role="region" aria-label="Opções de acessibilidade">
+    <div class="container acessibilidade__linha">
+      <nav class="acessibilidade__atalhos" aria-label="Atalhos">
+        <a href="#conteudo" accesskey="1">Ir para o conteúdo <span>[1]</span></a>
+        <a href="#menu" accesskey="2">Ir para o menu <span>[2]</span></a>
+        <a href="#contato" accesskey="3">Ir para o rodapé <span>[3]</span></a>
+      </nav>
+      <div class="acessibilidade__opcoes">
+        <span class="acessibilidade__rotulo" id="rotulo-fonte">Texto</span>
+        <div class="a11y-grupo" role="group" aria-labelledby="rotulo-fonte">
+          <button type="button" class="a11y-botao" data-a11y="menos" aria-label="A− diminuir o texto">A&minus;</button>
+          <button type="button" class="a11y-botao" data-a11y="normal" aria-label="A tamanho normal do texto">A</button>
+          <button type="button" class="a11y-botao" data-a11y="mais" aria-label="A+ aumentar o texto">A+</button>
+        </div>
+        <button type="button" class="a11y-botao" data-a11y="contraste" aria-pressed="false">
+          <span aria-hidden="true">&#9680;</span> Alto contraste
+        </button>
+      </div>
+      <p class="sr-only" id="a11y-aviso" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- ===== CABEÇALHO ===== -->
+  <header class="topo">
+    <div class="container topo__linha">
+      <a href="#conteudo" class="marca">
+        <img src="assets/img/logo.png" alt="" class="marca__simbolo" width="54" height="54">
+        <span class="marca__texto">
+          <span class="marca__nome">Coopersol</span>
+          <span class="marca__local">Jales · SP</span>
+        </span>
+      </a>
+
+      <!-- Menu sem JavaScript: o checkbox abre/fecha o menu no celular -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">
+      <label for="menu-toggle" class="menu-botao" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="menu" id="menu" aria-label="Menu principal">
+        <a href="#coleta">Coleta</a>
+        <a href="#separar">Como separar</a>
+        <a href="#sobre">Quem somos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#transparencia">Transparência</a>
+        <a href="formulario.html" class="menu__destaque">Fale conosco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container hero__linha">
+        <div class="hero__texto">
+          <p class="etiqueta etiqueta--clara">Cooperativa de catadores de Jales</p>
+          <h1>Seu reciclável vira renda para famílias de Jales</h1>
+          <p class="hero__resumo">
+            A Coopersol faz a coleta seletiva porta a porta em Jales, de segunda a sexta
+            e no sábado até o meio-dia. Você separa e a gente busca, ou você traz direto até a nossa sede.
+            O que é vendido para a indústria é dividido entre os cooperados.
+          </p>
+          <div class="hero__acoes">
+            <a href="#coleta" class="botao botao--sol">Qual dia passa no meu bairro?</a>
+            <a href="#separar" class="botao botao--contorno">Como separar</a>
+          </div>
+        </div>
+
+        <div class="hero__arte" aria-hidden="true">
+          <img src="assets/img/logo.png" alt="" width="260" height="260">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NÚMEROS ===== -->
+    <section class="numeros" aria-label="A Coopersol em números">
+      <div class="container numeros__linha">
+        <div class="numero">
+          <strong>Seg. a sex.</strong>
+          <span>coleta porta a porta, de manhã e à tarde</span>
+        </div>
+        <div class="numero">
+          <strong>Sábado</strong>
+          <span>coleta até o meio-dia</span>
+        </div>
+        <div class="numero">
+          <strong>+20</strong>
+          <span>cooperados com renda vinda da reciclagem</span>
+        </div>
+        <div class="numero">
+          <strong>Desde 2007</strong>
+          <span>organizando os catadores de Jales</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COLETA NO BAIRRO ===== -->
+    <section id="coleta" class="secao" aria-labelledby="titulo-coleta">
+      <div class="container">
+        <div class="secao__cabeca">
+          <p class="etiqueta">Cronograma</p>
+          <h2 id="titulo-coleta">Qual dia a coleta passa no meu bairro?</h2>
+          <p>
+            A Coopersol coleta <strong>somente em Jales</strong>, de <strong>segunda a sexta</strong>,
+            e no <strong>sábado (até o meio-dia)</strong>. Coloque o reciclável na calçada no dia do seu bairro,
+            antes do caminhão passar.
+          </p>
+        </div>
+
+        <!-- Busca de bairro (assets/js/main.js). Sem JavaScript, a lista completa continua visível. -->
+        <div class="busca" role="search" hidden>
+          <label for="busca-bairro" class="busca__rotulo">Digite o nome do seu bairro</label>
+          <div class="busca__linha">
+            <input type="search" id="busca-bairro" class="busca__campo" placeholder="Ex.: Jardim Arapuã"
+                   autocomplete="off" aria-describedby="busca-resultado">
+          </div>
+          <p class="busca__resultado" id="busca-resultado" aria-live="polite"></p>
+        </div>
+
+        <p class="aviso">
+          <strong>Sábado:</strong> coleta até o meio-dia. Para saber se passa no seu bairro, confirme pelo
+          <a href="https://wa.me/5517996198406">WhatsApp (17) 99619-8406</a>.
+        </p>
+
+        <div class="dias">
+          <article class="dia" data-dia="Segunda">
+            <h3 class="dia__nome">Segunda</h3>
+            <div class="dia__corpo" tabindex="0" role="region" aria-label="Bairros atendidos na segunda">
+              <div class="turno" data-turno="Manhã">
+                <span class="turno__rotulo turno__rotulo--manha">Manhã</span>
+                <ul class="bairros">
+                  <li>Jardim Samambaia</li>
+                  <li>Jardim Aclimação</li>
+                  <li>Jardim Estados Unidos</li>
+                  <li>Jardim Paulista</li>
+                  <li>São Judas Tadeu (1ª parte)</li>
+                  <li>Vila Nossa Senhora Aparecida</li>
+                  <li>Jardim São Gabriel</li>
+                  <li>Jardim Euphly Jalles</li>
+                  <li>Jardim Paraíso (1ª parte)</li>
+                </ul>
+              </div>
+              <div class="turno" data-turno="Tarde">
+                <span class="turno__rotulo turno__rotulo--tarde">Tarde</span>
+                <ul class="bairros">
+                  <li>Jardim América (I, II, III e IV)</li>
+                  <li>São Judas Tadeu (2ª parte)</li>
+                  <li>Jardim Paraíso (2ª parte)</li>
+                  <li>Centro (comércio)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="dia" data-dia="Terça">
+            <h3 class="dia__nome">Terça</h3>
+            <div class="dia__corpo" tabindex="0" role="region" aria-label="Bairros atendidos na terça">
+              <div class="turno" data-turno="Manhã">
+                <span class="turno__rotulo turno__rotulo--manha">Manhã</span>
+                <ul class="bairros">
+                  <li>Vila Aparecida da Boa Vista</li>
+                  <li>Subida Preta</li>
+                  <li>Residencial Duana</li>
+                  <li>Jardim Pêgolo I e II</li>
+                  <li>Chácara Alto do Marimbondo</li>
+                  <li>Vila Santa Izabel</li>
+                  <li>Jardim das Palmeiras</li>
+                  <li>Chácara Bela Vista</li>
+                  <li>Chácara Bandeirantes</li>
+                  <li>Vila Stafuza</li>
+                  <li>IV Centenário</li>
+                  <li>Vila São José</li>
+                  <li>Jardim Bom Jesus</li>
+                  <li>Jardim Morumbi</li>
+                  <li>Residencial Maria Silveira</li>
+                  <li>Residencial Maria Paula</li>
+                  <li>Vila Pinheiro</li>
+                  <li>Vila Norma</li>
+                </ul>
+              </div>
+              <div class="turno" data-turno="Tarde">
+                <span class="turno__rotulo turno__rotulo--tarde">Tarde</span>
+                <ul class="bairros">
+                  <li>Jardim Oiti</li>
+                  <li>Jardim Primavera</li>
+                  <li>Residencial São Lucas</li>
+                  <li>Jardim Pires de Andrade</li>
+                  <li>Vila Nascimento</li>
+                  <li>Alto do Ipê</li>
+                  <li>Centro (comércio)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="dia" data-dia="Quarta">
+            <h3 class="dia__nome">Quarta</h3>
+            <div class="dia__corpo" tabindex="0" role="region" aria-label="Bairros atendidos na quarta">
+              <div class="turno" data-turno="Manhã">
+                <span class="turno__rotulo turno__rotulo--manha">Manhã</span>
+                <ul class="bairros">
+                  <li>Parque São Bernardo</li>
+                  <li>Residencial Paineiras I e II</li>
+                  <li>Jardim São Francisco</li>
+                  <li>Jardim Nova York</li>
+                  <li>Jardim Soraia</li>
+                  <li>Jardim Tangará</li>
+                  <li>Vila Talma</li>
+                  <li>Jardim Aeroporto</li>
+                  <li>Jardim Municipal</li>
+                  <li>Jardim Renascer</li>
+                  <li>Cohab Nelzia Stellutte</li>
+                  <li>CECAP</li>
+                  <li>Jardim Novo Mundo</li>
+                  <li>Jardim Brasília</li>
+                  <li>Jardim Paulo VI</li>
+                  <li>Cohab Honório Amadeu</li>
+                  <li>Vila Maria</li>
+                </ul>
+              </div>
+              <div class="turno" data-turno="Tarde">
+                <span class="turno__rotulo turno__rotulo--tarde">Tarde</span>
+                <ul class="bairros">
+                  <li>Jardim Morumbi</li>
+                  <li>Jardim Eldorado</li>
+                  <li>Jardim Brasil</li>
+                  <li>Jardim Monterey</li>
+                  <li>Jardim do Bosque</li>
+                  <li>Jardim Guaraní</li>
+                  <li>Centro (comércio)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="dia" data-dia="Quinta">
+            <h3 class="dia__nome">Quinta</h3>
+            <div class="dia__corpo" tabindex="0" role="region" aria-label="Bairros atendidos na quinta">
+              <div class="turno" data-turno="Manhã">
+                <span class="turno__rotulo turno__rotulo--manha">Manhã</span>
+                <ul class="bairros">
+                  <li>Jardim Arapuã</li>
+                  <li>Jardim Zafani</li>
+                  <li>Jardim Ipiranga</li>
+                  <li>Jardim Santo Expedito</li>
+                  <li>Jardim Ana Cristina</li>
+                  <li>Centro (ruas 14, 16, 18, 20, 22 e 24), da Av. Afonso Rossafa Molina até a Av. Francisco Jalles</li>
+                </ul>
+              </div>
+              <div class="turno" data-turno="Tarde">
+                <span class="turno__rotulo turno__rotulo--tarde">Tarde</span>
+                <ul class="bairros">
+                  <li>Cohab Arapuã</li>
+                  <li>Cohab Pedro Nogueira</li>
+                  <li>Cohab João Colodetti</li>
+                  <li>Vila Mariana</li>
+                  <li>Maria Gabriela</li>
+                  <li>JACB</li>
+                  <li>Monte Líbano</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="dia" data-dia="Sexta">
+            <h3 class="dia__nome">Sexta</h3>
+            <div class="dia__corpo" tabindex="0" role="region" aria-label="Bairros atendidos na sexta">
+              <div class="turno" data-turno="Manhã">
+                <span class="turno__rotulo turno__rotulo--manha">Manhã</span>
+                <ul class="bairros">
+                  <li>Vila União</li>
+                  <li>Jardim Trianon</li>
+                  <li>Jardim Romero</li>
+                  <li>Vila Inês</li>
+                  <li>Vila Helizabeth</li>
+                  <li>Jardim Europa</li>
+                  <li>Jardim Nova Vida</li>
+                  <li>Jardim Micena</li>
+                  <li>Vila Rodrigues</li>
+                  <li>Jardim Castelo</li>
+                  <li>Jardim São Jorge</li>
+                  <li>Vila Goldoni</li>
+                  <li>Nova Jales (I e II)</li>
+                  <li>Jardim Alvorada</li>
+                  <li>Residencial Alpha Jales</li>
+                </ul>
+              </div>
+              <div class="turno" data-turno="Tarde">
+                <span class="turno__rotulo turno__rotulo--tarde">Tarde</span>
+                <ul class="bairros">
+                  <li>Cohab Roque Viola</li>
+                  <li>Cohab Dercílio Joaquim de Carvalho</li>
+                  <li>Cohab Santo Hernandes Argentina</li>
+                  <li>Residencial Big Plaza</li>
+                  <li>Centro (Rua 1 até a Av. Jânio Quadros)</li>
+                  <li>Centro (Rua 2 até a Rua 14)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="dia dia--outros" data-dia="Outros" data-a-confirmar>
+            <h3 class="dia__nome">Outros bairros</h3>
+            <p class="dia__nota">O dia da coleta nestes bairros ainda não está no cronograma. Confirme pelo WhatsApp.</p>
+            <div class="dia__corpo" tabindex="0" role="region" aria-label="Outros bairros, com dia a confirmar">
+              <div class="turno" data-turno="dia a confirmar">
+                <ul class="bairros">
+                  <li>Conj. Hab. Dr. Arnaldo Silveira</li>
+                  <li>Conj. Hab. Wladimir A. Franco</li>
+                  <li>Jardim Gênova</li>
+                  <li>Jardim Nova Aliança</li>
+                  <li>Jardim Tropical</li>
+                  <li>Loteamento Avenida</li>
+                  <li>Loteamento Fassa</li>
+                  <li>Novo Horizonte</li>
+                  <li>Parque das Flores</li>
+                  <li>Parque Industrial I (José Antônio Caparroz)</li>
+                  <li>Parque Industrial II (Valentim Paulo Viola)</li>
+                  <li>Residencial Bella Vista</li>
+                  <li>Residencial Carmom</li>
+                  <li>Residencial Gran Plaza</li>
+                  <li>Residencial Green Valley</li>
+                  <li>Residencial Hipócrates</li>
+                  <li>Residencial Honório Amadeu</li>
+                  <li>Residencial Jardim Elisa</li>
+                  <li>Residencial Jardim Vila Maria II</li>
+                  <li>Residencial José Rodrigues</li>
+                  <li>Residencial Maione</li>
+                </ul>
+              </div>
+            </div>
+            <a href="https://wa.me/5517996198406" class="botao botao--verde">Confirmar no WhatsApp</a>
+          </article>
+        </div>
+
+        <!-- Ponto de entrega na sede -->
+        <div class="entrega">
+          <img src="assets/img/galeria/01-fachada.jpg" alt="Fachada da sede da Coopersol, um galpão branco e verde com a placa da cooperativa" class="entrega__foto" width="1200" height="900" loading="lazy">
+          <div class="entrega__texto">
+            <p class="etiqueta">Ponto de entrega</p>
+            <h3>Prefere trazer? Entregue seu reciclável direto na sede</h3>
+            <p>
+              Você também pode levar o material separado até o galpão da Coopersol.
+              Assim ele chega mais limpo e mais rápido à triagem.
+            </p>
+            <ul class="entrega__info">
+              <li><strong>Endereço:</strong> Rodovia Victório Prandi, 767 · Córrego do Marimbondo · Jales/SP</li>
+              <li><strong>Antes de ir:</strong> confirme o horário pelo WhatsApp (17) 99619-8406</li>
+            </ul>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=-20.307562%2C-50.548875" class="botao botao--verde">Ver no mapa</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMO SEPARAR ===== -->
+    <section id="separar" class="secao secao--papel" aria-labelledby="titulo-separar">
+      <div class="container">
+        <div class="secao__cabeca">
+          <p class="etiqueta">Separação correta</p>
+          <h2 id="titulo-separar">Separe certo: só assim o reciclável vira renda</h2>
+          <p>Material limpo e bem separado vale mais na venda e protege quem trabalha na triagem.</p>
+        </div>
+
+        <div class="destaque-separacao" role="note">
+          <span class="destaque-separacao__icone" aria-hidden="true">!</span>
+          <p>
+            <strong>Reciclável sujo ou misturado com lixo comum não pode ser vendido.</strong>
+            Ele vira rejeito e vai para o aterro, e o cooperado perde a renda daquele material.
+            Separar direito é a forma mais simples de ajudar a cooperativa.
+          </p>
+        </div>
+
+        <h3 class="subtitulo">O que pode ir para a coleta</h3>
+        <div class="materiais">
+          <article class="material material--papel">
+            <h4>Papel</h4>
+            <p>Jornais, revistas, cadernos, embalagens, caixas de papel e papelão, impressos em geral.</p>
+          </article>
+          <article class="material material--plastico">
+            <h4>Plástico</h4>
+            <p>Garrafas PET, brinquedos, potes e frascos, sacos plásticos, CDs e DVDs, embalagens de higiene e limpeza, chapas de raio-X.</p>
+          </article>
+          <article class="material material--metal">
+            <h4>Metal</h4>
+            <p>Latas de alumínio e de aço, arames, canos e ferragens.</p>
+          </article>
+          <article class="material material--vidro">
+            <h4>Vidro</h4>
+            <p>Garrafas, frascos de conserva, copos e potes de alimentos, sempre inteiros.</p>
+          </article>
+          <article class="material material--eletronico">
+            <h4>Lixo eletrônico</h4>
+            <p>Baterias, rádios, aparelhos de DVD, TV, monitor, teclado, mouse e celular.</p>
+          </article>
+          <article class="material material--oleo">
+            <h4>Óleo de cozinha</h4>
+            <p>Óleo usado, frio, guardado em garrafa PET bem fechada.</p>
+          </article>
+        </div>
+
+        <h3 class="subtitulo subtitulo--alerta">O que a Coopersol <em>não</em> coleta</h3>
+        <ul class="nao-coleta">
+          <li>Lâmpadas fluorescentes</li>
+          <li>Isopor</li>
+          <li>Pneus</li>
+          <li>Copos descartáveis</li>
+          <li>Vidro quebrado e louça</li>
+          <li>Pilhas</li>
+        </ul>
+        <p class="nota">
+          Pilhas, lâmpadas fluorescentes e pneus precisam de descarte especial: procure os pontos de
+          entrega do comércio que vende esses produtos ou a Prefeitura de Jales.
+        </p>
+
+        <h3 class="subtitulo">Dicas para separar certo</h3>
+        <div class="dicas">
+          <div class="dica">
+            <span class="dica__numero" aria-hidden="true">1</span>
+            <div>
+              <h4>Enxágue rápido</h4>
+              <p>Passe uma água em caixas de leite, potes e latas. Evita mau cheiro e bichos.</p>
+            </div>
+          </div>
+          <div class="dica">
+            <span class="dica__numero" aria-hidden="true">2</span>
+            <div>
+              <h4>Seco longe do orgânico</h4>
+              <p>Resto de comida vai no lixo comum. Reciclável misturado com lixo é perdido.</p>
+            </div>
+          </div>
+          <div class="dica">
+            <span class="dica__numero" aria-hidden="true">3</span>
+            <div>
+              <h4>Vidro só inteiro</h4>
+              <p>Garrafas e frascos inteiros podem ir. Vidro quebrado e louça não são coletados.</p>
+            </div>
+          </div>
+          <div class="dica">
+            <span class="dica__numero" aria-hidden="true">4</span>
+            <div>
+              <h4>No dia certo</h4>
+              <p>Coloque o reciclável na calçada só no dia da coleta do seu bairro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUEM SOMOS ===== -->
+    <section id="sobre" class="secao" aria-labelledby="titulo-sobre">
+      <div class="container sobre">
+        <div class="sobre__texto">
+          <p class="etiqueta">Quem somos</p>
+          <h2 id="titulo-sobre">Uma cooperativa que transforma resíduo em dignidade</h2>
+          <p>
+            Os catadores de Jales começaram a se organizar em 2007, na Acoserge, uma associação
+            de catadores. Em março de 2011 nasceu a Coopersol, Cooperativa de Trabalho Regional
+            Solidária de Catadores de Resíduos Sólidos. Hoje é ela quem faz a coleta seletiva
+            da cidade, em parceria com a Prefeitura Municipal de Jales.
+          </p>
+          <p>
+            Na sede da Rodovia Victório Prandi, o material é separado, prensado e vendido
+            para a indústria. O valor arrecadado no mês é dividido entre os cooperados, que
+            trocaram o trabalho informal nas ruas por um trabalho organizado, com galpão coberto
+            e equipamentos de proteção.
+          </p>
+        </div>
+
+        <ol class="linha-tempo">
+          <li>
+            <span class="linha-tempo__ano">2007</span>
+            <p>Catadores se organizam na Acoserge, associação de catadores de Jales.</p>
+          </li>
+          <li>
+            <span class="linha-tempo__ano">Mar. 2011</span>
+            <p>A associação dá lugar à Coopersol, cooperativa de trabalho dos catadores.</p>
+          </li>
+          <!-- CONFIRMAR com o Sandro se a mudança de sede foi mesmo em 2020 -->
+          <li>
+            <span class="linha-tempo__ano">2020</span>
+            <p>Mudança para a sede atual, com galpão coberto maior, na Rod. Victório Prandi.</p>
+          </li>
+          <li>
+            <span class="linha-tempo__ano">2023</span>
+            <p>Coleta reorganizada passa a cobrir todos os bairros e o centro de Jales.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="container pilares">
+        <article class="pilar">
+          <h3>Meio ambiente</h3>
+          <p>Desvia recicláveis do aterro, aumenta a vida útil dele e reduz a extração de recursos naturais.</p>
+        </article>
+        <article class="pilar">
+          <h3>Renda e dignidade</h3>
+          <p>Trabalho formal e organizado para famílias que antes dependiam da catação nas ruas.</p>
+        </article>
+        <article class="pilar">
+          <h3>Educação ambiental</h3>
+          <p>Conscientização de moradores e escolas sobre separar o lixo na fonte.</p>
+        </article>
+      </div>
+
+      <div class="container parceria">
+        <p>Em parceria com</p>
+        <img src="assets/img/prefeitura-jales.jpg" alt="Prefeitura de Jales, Cidade que acolhe" width="622" height="362" class="parceria__logo">
+      </div>
+    </section>
+
+    <!-- ===== GALERIA: VÍDEO + CARROSSEL DE FOTOS ===== -->
+    <section id="galeria" class="secao secao--papel" aria-labelledby="titulo-galeria">
+      <div class="container">
+        <div class="secao__cabeca">
+          <p class="etiqueta">Galeria</p>
+          <h2 id="titulo-galeria">Conheça a cooperativa por dentro</h2>
+          <p>Fotos da sede e o depoimento de quem faz a coleta seletiva de Jales acontecer.</p>
+        </div>
+
+        <div class="galeria">
+          <figure class="video">
+            <video controls preload="none" poster="assets/video/poster.jpg" width="720" height="1280"
+                   aria-describedby="video-descricao">
+              <source src="assets/video/coopersol-prefeitura.mp4" type="video/mp4">
+              Seu navegador não reproduz vídeos.
+              <a href="assets/video/coopersol-prefeitura.mp4">Baixe o vídeo</a>.
+            </video>
+            <figcaption id="video-descricao">
+              Cooperados e a gestão da Coopersol falam sobre o trabalho na cooperativa
+              e a importância da separação. Vídeo com legendas na imagem.
+              <span class="credito">Vídeo: Prefeitura de Jales</span>
+            </figcaption>
+          </figure>
+
+          <div class="fotos">
+            <p class="fotos__dica" id="fotos-dica">
+              Use as setas ou deslize para o lado para ver todas as fotos
+            </p>
+            <!-- Carrossel: scroll-snap no CSS + setas, bolinhas e rolagem suave no assets/js/main.js -->
+            <div class="carrossel-moldura">
+              <button type="button" class="carrossel__seta carrossel__seta--anterior" aria-label="Foto anterior" hidden>&#8592;</button>
+              <ul class="carrossel" tabindex="0" aria-label="Fotos da Coopersol" aria-describedby="fotos-dica">
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/01-fachada.jpg" alt="Fachada do galpão da Coopersol com a placa da cooperativa e um carro estacionado na frente" width="1200" height="900" loading="lazy">
+                  <figcaption>Sede da Coopersol, na Rodovia Victório Prandi</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/02-cooperados.jpg" alt="Grupo de cooperados em frente ao galpão, ao lado do caminhão da coleta e de big bags com material" width="1200" height="900" loading="lazy">
+                  <figcaption>Cooperados e o caminhão da coleta</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/03-galpao.jpg" alt="Interior do galpão coberto, com uma grande pilha de recicláveis e cooperadas trabalhando na mesa de triagem ao fundo" width="1200" height="900" loading="lazy">
+                  <figcaption>Galpão de triagem: o material chega da coleta e é separado</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/04-prensa.jpg" alt="Prensa hidráulica azul e amarela ao lado de fardos de papel já prensados" width="1200" height="900" loading="lazy">
+                  <figcaption>Prensa que transforma o material em fardos</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/05-fardos.jpg" alt="Fardos de papelão empilhados no pátio, cobertos por lona" width="1200" height="900" loading="lazy">
+                  <figcaption>Fardos de papelão prontos para a venda à indústria</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/06-bags.jpg" alt="Big bags cheios de material separado ao lado do galpão" width="1200" height="900" loading="lazy">
+                  <figcaption>Big bags com material já separado</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/07-patio.jpg" alt="Pátio com empilhadeira e big bags com latas e garrafas PET" width="1200" height="900" loading="lazy">
+                  <figcaption>Pátio com latas e garrafas PET separadas</figcaption>
+                </figure>
+              </li>
+              <li class="slide">
+                <figure>
+                  <img src="assets/img/galeria/08-visita.jpg" alt="Estudantes conversando com uma cooperada na entrada do galpão" width="1200" height="900" loading="lazy">
+                  <figcaption>Visita dos estudantes da FATEC Jales, novembro de 2026</figcaption>
+                </figure>
+              </li>
+              </ul>
+              <button type="button" class="carrossel__seta carrossel__seta--proxima" aria-label="Próxima foto" hidden>&#8594;</button>
+            </div>
+            <div class="carrossel__pontos" hidden></div>
+            <p class="sr-only" id="carrossel-aviso" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRESTAÇÃO DE CONTAS ===== -->
+    <section id="transparencia" class="secao" aria-labelledby="titulo-transparencia">
+      <div class="container">
+        <div class="secao__cabeca">
+          <p class="etiqueta">Transparência</p>
+          <h2 id="titulo-transparencia">Prestação de contas</h2>
+          <p>
+            Como toda cooperativa, a Coopersol tem as contas aprovadas pelos cooperados em assembleia.
+            Aqui ficam os documentos que mostram como o trabalho é feito e como os recursos são usados.
+          </p>
+        </div>
+
+        <!-- Para publicar um documento: coloque o PDF em assets/docs/, troque o <span class="status">
+             por um link <a class="botao botao--verde" href="assets/docs/arquivo.pdf">Abrir PDF</a> -->
+        <div class="documentos">
+          <article class="documento">
+            <h3>Balanço anual</h3>
+            <p>Receitas da venda dos materiais, despesas e valor dividido entre os cooperados.</p>
+            <span class="status">Em breve</span>
+          </article>
+          <article class="documento">
+            <h3>Material coletado</h3>
+            <p>Toneladas de papel, plástico, metal e vidro coletadas e vendidas por mês.</p>
+            <span class="status">Em breve</span>
+          </article>
+          <article class="documento">
+            <h3>Atas das assembleias</h3>
+            <p>Decisões tomadas pelos cooperados e aprovação das contas do ano.</p>
+            <span class="status">Em breve</span>
+          </article>
+          <article class="documento">
+            <h3>Parceria com a Prefeitura</h3>
+            <p>Termo de parceria com a Prefeitura de Jales e o que cada parte oferece.</p>
+            <span class="status">Em breve</span>
+          </article>
+        </div>
+        <p class="nota">
+          Quer ver algum documento que ainda não está aqui?
+          <a href="formulario.html">Peça pelo formulário de contato</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== EMPRESAS ===== -->
+    <section id="empresas" class="secao secao--verde" aria-labelledby="titulo-empresas">
+      <div class="container empresas">
+        <div class="empresas__texto">
+          <p class="etiqueta etiqueta--clara">Para empresas e parceiros</p>
+          <h2 id="titulo-empresas">Seu comércio gera muito reciclável?</h2>
+          <p>
+            Agende a retirada com a cooperativa ou traga o material até a sede.
+            Empresas e escolas de Jales também podem apoiar a Coopersol com doação
+            de material, estrutura ou divulgação.
+          </p>
+        </div>
+        <div class="empresas__acoes">
+          <a href="https://wa.me/5517996198406" class="botao botao--sol">Agendar coleta</a>
+          <a href="formulario.html" class="botao botao--contorno">Quero ser parceiro</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== RODAPÉ / CONTATO ===== -->
+  <footer id="contato" class="rodape" tabindex="-1">
+    <div class="container rodape__linha">
+      <div class="rodape__marca">
+        <a href="#conteudo" class="marca marca--clara">
+          <img src="assets/img/logo.png" alt="" class="marca__simbolo" width="44" height="44">
+          <span class="marca__texto">
+            <span class="marca__nome">Coopersol</span>
+            <span class="marca__local">Jales · SP</span>
+          </span>
+        </a>
+        <p>Cooperativa de Trabalho Regional Solidária de Catadores de Resíduos Sólidos. Coleta seletiva somente em Jales.</p>
+      </div>
+
+      <div class="rodape__bloco">
+        <h3>Endereço</h3>
+        <p>Rodovia Victório Prandi, 767<br>Córrego do Marimbondo · Jales/SP<br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-20.307562%2C-50.548875">Ver no mapa</a></p>
+        <p>Coleta: segunda a sexta e sábado até o meio-dia</p>
+      </div>
+
+      <div class="rodape__bloco">
+        <h3>Contato</h3>
+        <p>
+          <a href="https://wa.me/5517996198406">WhatsApp (17) 99619-8406</a><br>
+          <!-- TROCAR pelo endereço do perfil oficial no Instagram -->
+          <a href="https://www.instagram.com/PERFIL_DA_COOPERSOL/">Instagram da Coopersol</a><br>
+          <a href="formulario.html">Formulário de contato</a><br>
+          <a href="#transparencia">Prestação de contas</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="container rodape__parceria">
+      <p>Em parceria com</p>
+      <img src="assets/img/prefeitura-jales.jpg" alt="Prefeitura de Jales, Cidade que acolhe" width="155" height="90">
+    </div>
+
+    <div class="container rodape__base">
+      <p class="rodape__copyright">&copy; 2026 Coopersol Jales. Todos os direitos reservados.</p>
+      <p>Site desenvolvido por estudantes da FATEC Jales em um projeto de curricularização,
+        de forma voluntária e sem fins lucrativos.</p>
+    </div>
+  </footer>
+
+  <!-- Botão fixo de WhatsApp -->
+  <a href="https://wa.me/5517996198406" class="whats-fixo" aria-label="Falar com a Coopersol no WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
+  </a>
+
+  <!-- VLibras: tradutor para Libras do Governo Federal (vlibras.gov.br) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
+</body>
+</html>

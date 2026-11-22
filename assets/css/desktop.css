@@ -1,0 +1,257 @@
+/* =========================================================
+   COOPERSOL — desktop.css
+   Computadores: a partir de 1024px de largura
+   Layout em colunas, mais respiro e títulos maiores
+   ========================================================= */
+
+.container {
+  padding: 0 40px;
+}
+
+/* ---------- Cabeçalho ---------- */
+.topo__linha {
+  min-height: 80px;
+}
+
+.menu-botao {
+  display: none;
+}
+
+.menu {
+  align-items: center;
+  gap: 8px;
+}
+
+.menu a {
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.menu a.menu__destaque {
+  padding: 10px 22px;
+  margin-left: 8px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 88px 0 96px;
+}
+
+.hero__linha {
+  gap: 64px;
+}
+
+.hero__texto {
+  flex: 1 1 60%;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+}
+
+.hero__resumo {
+  font-size: 1.15rem;
+  max-width: 560px;
+}
+
+.hero__arte {
+  flex: 0 0 300px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Números: 4 em linha ---------- */
+.numeros {
+  padding: 36px 0;
+}
+
+.numeros__linha {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.numero strong {
+  font-size: 2rem;
+}
+
+.numero span {
+  font-size: 0.95rem;
+}
+
+/* ---------- Seções ---------- */
+.secao {
+  padding: 88px 0;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+.secao__cabeca {
+  margin-bottom: 40px;
+}
+
+/* ---------- Cronograma (grid): 3 dias por linha ---------- */
+.dias {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.dia {
+  padding: 24px;
+}
+
+/* ---------- Materiais (grid): 4 em linha ---------- */
+.materiais {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.material {
+  padding: 24px;
+}
+
+.material h3 {
+  font-size: 1.8rem;
+}
+
+/* ---------- Dicas: 4 em linha ---------- */
+.dicas {
+  gap: 20px;
+}
+
+.dica {
+  flex: 1 1 calc(25% - 20px);
+  flex-direction: column;
+}
+
+/* ---------- Quem somos ---------- */
+.sobre {
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.sobre__texto {
+  flex: 1 1 55%;
+}
+
+.sobre__texto p {
+  font-size: 1.05rem;
+}
+
+.linha-tempo {
+  flex: 1 1 45%;
+}
+
+.pilares {
+  gap: 20px;
+}
+
+/* ---------- Empresas: texto e botões lado a lado ---------- */
+.secao--verde {
+  padding: 64px 0;
+}
+
+.empresas {
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.empresas__texto {
+  flex: 1 1 60%;
+}
+
+.empresas__texto p {
+  margin-bottom: 0;
+  max-width: 600px;
+}
+
+.empresas__acoes {
+  flex: 0 0 auto;
+}
+
+/* ---------- Rodapé: 3 colunas ---------- */
+.rodape {
+  padding: 64px 0 32px;
+}
+
+.rodape__linha {
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.rodape__base {
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+/* ---------- Página do formulário ---------- */
+.pagina-topo {
+  padding: 64px 0 72px;
+}
+
+.pagina-topo h1 {
+  font-size: 3rem;
+}
+
+.contato {
+  padding: 64px 0 88px;
+}
+
+/* grid: formulário largo + cartão lateral fixo */
+.contato-layout {
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 32px;
+}
+
+.formulario {
+  padding: 36px;
+}
+
+.form-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 24px;
+}
+
+.opcoes {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.cartao-lateral {
+  position: sticky;
+  top: 104px;
+}
+
+/* ---------- Ponto de entrega (grid): foto + texto ---------- */
+.entrega {
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.entrega__texto {
+  padding: 32px 40px 32px 0;
+}
+
+/* ---------- Separação ---------- */
+.nao-coleta {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ---------- Galeria (grid): vídeo + carrossel ---------- */
+.galeria {
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 40px;
+}
+
+.slide {
+  flex-basis: 75%;
+}
+
+/* ---------- Prestação de contas (grid) ---------- */
+.documentos {
+  grid-template-columns: repeat(4, 1fr);
+}
